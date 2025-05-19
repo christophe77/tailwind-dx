@@ -7,6 +7,8 @@ const presets: Record<string, string> = {
 };
 
 export function twDX(blocks: TwDXInput): string {
+  if (!blocks || typeof blocks !== 'object') return '';
+
   const { preset, ...rest } = blocks;
   const presetClasses = preset ? presets[preset] ?? '' : '';
   const otherClasses = Object.values(rest).filter(Boolean).join(' ');
