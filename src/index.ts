@@ -1,4 +1,6 @@
-import { TwDXInput } from './types/twDXInput';
+import { TwDXInput } from './types/index';
+
+export type { TwDXInput } from './types/index';
 
 const presets: Record<string, string> = {
   card: 'bg-white rounded-lg shadow-md p-4',
