@@ -1,9 +1,13 @@
 {
 	"name": "tailwind-dx",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "DX utility for organizing Tailwind classNames semantically",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
+	"files": [
+		"dist",
+		"README.md"
+	],
 	"scripts": {
 		"build": "tsc",
 		"dev": "tsc --watch",
