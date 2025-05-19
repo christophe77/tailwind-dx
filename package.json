@@ -1,0 +1,33 @@
+{
+	"name": "tailwind-dx",
+	"version": "1.0.0",
+	"description": "DX utility for organizing Tailwind classNames semantically",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsc --watch",
+		"prepublishOnly": "npm run build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/christophe77/tailwind-dx.git"
+	},
+	"keywords": [
+		"tailwind",
+		"dx",
+		"className",
+		"react",
+		"utility"
+	],
+	"author": "christophe77",
+	"license": "MIT",
+	"type": "commonjs",
+	"bugs": {
+		"url": "https://github.com/christophe77/tailwind-dx/issues"
+	},
+	"homepage": "https://github.com/christophe77/tailwind-dx#readme",
+	"devDependencies": {
+		"typescript": "^5.8.3"
+	}
+}
