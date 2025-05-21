@@ -108,6 +108,42 @@ const className = twDX({
 });
 ```
 
+### ESLint Integration
+
+To enforce proper class placement in your project, add the ESLint plugin:
+
+1. Install the plugin:
+
+```bash
+npm install -D tailwind-dx
+```
+
+2. Add to your `.eslintrc.js`:
+
+```js
+module.exports = {
+	plugins: ['tailwind-dx'],
+	extends: ['plugin:tailwind-dx/recommended'],
+	// ... your other config
+};
+```
+
+Now ESLint will validate that your classes are in the correct layers:
+
+```ts
+// ❌ This will show an error
+twDX({
+	layout: 'text-lg', // Error: Class "text-lg" should be in the "typography" layer
+	typography: 'flex', // Error: Class "flex" should be in the "layout" layer
+});
+
+// ✅ This is correct
+twDX({
+	layout: 'flex',
+	typography: 'text-lg',
+});
+```
+
 ### Use with variants
 
 ```ts

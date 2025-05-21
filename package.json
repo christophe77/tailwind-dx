@@ -1,6 +1,6 @@
 {
 	"name": "tailwind-dx",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "DX utility for organizing Tailwind classNames semantically",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
