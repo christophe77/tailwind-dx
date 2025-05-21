@@ -1,13 +1,22 @@
 {
 	"name": "tailwind-dx",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "DX utility for organizing Tailwind classNames semantically",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"files": [
 		"dist",
+		"eslint-rules",
 		"README.md"
 	],
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.js"
+		},
+		"./eslint-rules": "./eslint-rules/index.js"
+	},
 	"scripts": {
 		"build": "tsc",
 		"dev": "tsc --watch",

@@ -118,7 +118,9 @@ To enforce proper class placement in your project, add the ESLint plugin:
 npm install -D tailwind-dx
 ```
 
-2. Add to your `.eslintrc.js`:
+2. Add to your ESLint config:
+
+For traditional config (`.eslintrc.js`):
 
 ```js
 module.exports = {
@@ -126,6 +128,23 @@ module.exports = {
 	extends: ['plugin:tailwind-dx/recommended'],
 	// ... your other config
 };
+```
+
+For flat config (`eslint.config.js`):
+
+```js
+import tailwindDxPlugin from 'tailwind-dx/eslint-rules';
+
+export default [
+	{
+		plugins: {
+			'tailwind-dx': tailwindDxPlugin,
+		},
+		rules: {
+			'tailwind-dx/layers': 'error',
+		},
+	},
+];
 ```
 
 Now ESLint will validate that your classes are in the correct layers:
