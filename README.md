@@ -8,7 +8,7 @@
 
 > Better classNames. Less eye-bleed. DX that actually feels good.
 
-`tailwind-dx` is a tiny utility that helps you write readable, maintainable Tailwind classNames by organizing them by intent — like layout, spacing, colors, and more.
+`tailwind-dx` is a tiny utility that helps you write readable, maintainable Tailwind classNames by organizing them by intent — like layout, spacing, typography, and more.
 
 No more 200-character `className` strings that look like a CSS ransom note.
 
@@ -19,7 +19,7 @@ No more 200-character `className` strings that look like a CSS ransom note.
 Tailwind is awesome. But reading your class strings after 3 espressos and 5 months of tech debt?
 
 ```ts
-'flex items-center justify-between px-4 py-2 bg-white text-gray-800 shadow rounded-md';
+'flex items-center justify-between px-4 py-2 text-gray-800 shadow rounded-md';
 ```
 
 Now compare:
@@ -28,7 +28,7 @@ Now compare:
 twDX({
 	layout: 'flex items-center justify-between',
 	spacing: 'px-4 py-2',
-	colors: 'bg-white text-gray-800',
+	typography: 'text-gray-800',
 	effects: 'shadow',
 	borders: 'rounded-md',
 });
@@ -40,10 +40,41 @@ twDX({
 
 ## ✨ Features
 
-- 🧠 Group Tailwind classes by purpose (layout, spacing, colors, etc.)
+- 🧠 Group Tailwind classes by purpose (layout, spacing, typography, etc.)
 - 🧱 Support for reusable class `presets` (like `card`, `buttonPrimary`, etc.)
 - 🧼 Cleaner `className` logic in React, Preact, Solid, whatever.
-- 🦾 Written in TypeScript. Typed. Minimal. Zero deps.
+- 🦾 Written in TypeScript. Minimal. Zero deps.
+- 🎯 ESLint validation for proper class categorization
+- 🌈 Support for responsive, state, and dark mode variants
+- 🤖 LLM-friendly structure for better AI assistance
+
+---
+
+## 🤖 LLM & IDE Friendly
+
+`tailwind-dx` is designed to be extremely friendly for both LLM coding agents and IDE autocompletion:
+
+1. **Structured Input**: The layer-based organization makes it easy for LLMs to understand and generate code
+2. **ESLint Validation**: Automatic validation of class placement in correct layers
+3. **Predictable Patterns**: Consistent structure makes it easier for AI to generate correct code
+4. **Self-Documenting**: The layer names serve as natural documentation
+5. **IDE Support**: Get autocompletion for:
+   - Layer names (layout, spacing, typography, etc.)
+   - Class names within each layer
+   - Variants (responsive, state, dark mode)
+
+Example of LLM-friendly code generation:
+
+```tsx
+// Easy for LLMs to understand and generate
+twDX({
+	layout: 'flex items-center justify-between',
+	spacing: 'px-4 py-2',
+	typography: 'text-gray-800 dark:text-white',
+	effects: 'shadow hover:shadow-lg',
+	borders: 'rounded-md focus:ring-2',
+});
+```
 
 ---
 
@@ -71,9 +102,25 @@ import { twDX } from 'tailwind-dx';
 const className = twDX({
 	layout: 'flex items-center justify-between',
 	spacing: 'px-4 py-2',
-	colors: 'bg-white text-gray-800',
+	typography: 'text-gray-800',
 	borders: 'rounded-md',
 	effects: 'shadow-md',
+});
+```
+
+### Use with variants
+
+```ts
+twDX({
+	// Responsive variants
+	layout: 'flex md:flex-col lg:flex-row',
+
+	// Dark mode variant
+	typography: 'text-gray-800 dark:text-white',
+
+	// State variants
+	effects: 'shadow hover:shadow-lg',
+	borders: 'rounded-md focus:ring-2',
 });
 ```
 
@@ -103,16 +150,20 @@ export function Card() {
 		<div
 			className={twDX({
 				layout: 'flex flex-col gap-4',
-				colors: 'bg-white text-gray-800',
+				typography: 'text-gray-800 dark:text-white',
 				spacing: 'p-6',
 				borders: 'rounded-xl',
-				effects: 'shadow-lg',
+				effects: 'shadow-lg hover:shadow-xl',
 			})}
 		>
 			<h2 className={twDX({ typography: 'text-xl font-bold' })}>
 				Hello, TailwindDX
 			</h2>
-			<p className={twDX({ typography: 'text-sm text-gray-500' })}>
+			<p
+				className={twDX({
+					typography: 'text-sm text-gray-500 dark:text-gray-400',
+				})}
+			>
 				Clean classNames, clean mind.
 			</p>
 		</div>
@@ -134,12 +185,6 @@ const className = clsx(
 	isActive && 'ring-2 ring-blue-500',
 );
 ```
-
----
-
-## 🤖 Types
-
-Yes, it's fully typed. You get autocompletion on your keys (`layout`, `spacing`, etc). Future versions may support auto-suggestion for class values too.
 
 ---
 

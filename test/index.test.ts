@@ -1,3 +1,5 @@
+/* eslint-env jest */
+import { describe, expect, it } from '@jest/globals';
 import { twDX } from '../src';
 
 describe('twDX', () => {
@@ -5,7 +7,6 @@ describe('twDX', () => {
 		const result = twDX({
 			layout: 'flex items-center',
 			spacing: 'p-4',
-			colors: 'text-black',
 		});
 
 		expect(result).toBe('flex items-center p-4 text-black');
